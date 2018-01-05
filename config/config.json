@@ -1,0 +1,18 @@
+{ 
+    "development": {
+        "username": "datamaster",
+        "password": "datapassword",
+        "database": "StellarisEthnics",
+        "host": "127.0.0.1",
+        "dialect": "postgresql",
+        "port": 8080
+    },
+    "production": {
+        "username": "datamaster",
+        "password": "datapassword",
+        "database": "StellarisEthnics",
+        "host": "127.0.0.1",
+        "dialect": "postgresql",
+        "port": 8080
+    }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Stellaris Ethnic Quiz",
+  "version": "1.0.0",
+  "description": "Political ethnic axis quiz",
+  "main": "index.js",
+  "author": "TK",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "mustache": "^2.3.0",
+    "path": "^0.12.7"
+  }
+}
