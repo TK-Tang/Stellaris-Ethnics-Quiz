@@ -1,16 +1,18 @@
 const express = require("express");
+const path = require("path");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const engines = require("consolidate");
 
-const models = require("./models");
+const HomeRouter = require("./routes/home.server.router");
 
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyhParser.urlencoded({ extended:true }));
+app.use(bodyParser.urlencoded());
 
-app.set("views", path.join(__dirname, "/app/views"));
-app.use(express.static(path.join(__dirname, "/public")));
+app.set("views", path.join(__dirname, "/views"));
+app.use(express.static(path.join(__dirname, "")));
 
 app.engine("/html", engines.mustache);
 app.set("view engine", "html");
