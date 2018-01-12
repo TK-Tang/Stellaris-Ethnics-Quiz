@@ -26,3 +26,15 @@ p.italics {
 .padding-10 {
     padding: 10px;
 }
+
+.page-header{
+    text-align: center;
+}
+
+.height-150 {
+    height: 160px;
+}
+
+.bold {
+    font-weight: bold;
+}
