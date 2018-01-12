@@ -5,3 +5,24 @@ a.no-color-change:hover {
 .home-sidebar-list-header {
     background-color: rgb(226, 226, 226)
 }
+
+
+.no-text-overflow {
+    text-overflow: ellipsis;
+}
+
+.panel-dark-grey{
+    background: rgb(87, 87, 87)
+}
+
+.panel-grey {
+    background: rgb(112, 112, 112)
+}
+
+p.italics {
+    font-style: italic;
+}
+
+.padding-10 {
+    padding: 10px;
+}
