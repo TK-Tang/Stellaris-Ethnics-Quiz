@@ -21,23 +21,22 @@ app.engine("html", require("ejs").renderFile);
 
 app.use("/", HomeRouter);
 
-models.sequelize.sync( {force: true}.then(() => {
+models.sequelizeCredentials.sync({force: true}).then(() => {
     const date = new Date();
 
     const defaultQuestion = {
         question: "Granting full citizenship to any sapient alien, regardless of their biology and culture is beneficial for civilization.",
-        xenophobia: 0,
-        xenophilia: 75,
+        xenophobe: 0,
+        xenophile: 75,
         egalitarian: 50,
         authoritarian: 0,
         materialist: 0,
         spiritualist: 0,
         militarist: 0,
         pacifist: 0,
-        lastModified: date.getDate() + ":" + date.getHours()
     }
 
-    models.sellarisQuestions.create(defaultQuestion).then(result => {
+    models.stellarisQuestions.create(defaultQuestion).then(result => {
         console.log("Default question added.");
     })
 
@@ -45,7 +44,7 @@ models.sequelize.sync( {force: true}.then(() => {
     app.listen(8080, function(){
         console.log("Stellaris ethnics quiz listening on port 8080!");
     })
-})).catch(e => {
+}).catch(e => {
     console.error("There was a connection error with the database.");
     console.error(e);
 })

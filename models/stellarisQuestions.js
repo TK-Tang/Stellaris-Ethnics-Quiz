@@ -10,35 +10,32 @@ module.exports = function(sequelize, Sequelize) {
         egalitarian: Sequelize.INTEGER,
         authoritarian: Sequelize.INTEGER,
         xenophile: Sequelize.INTEGER,
-        xenophobia: Sequelize.INTEGER,
+        xenophobe: Sequelize.INTEGER,
         materialist: Sequelize.INTEGER,
         spiritualist: Sequelize.INTEGER,
         militarist: Sequelize.INTEGER,
         pacifist: Sequelize.INTEGER,
-        lastModified: Sequelize.STRING
     });
 
     stellarisQuestion.insert = function(question, 
-                            xenophobia, 
-                            xenophilia, 
+                            xenophobe, 
+                            xenophile, 
                             egalitarian, 
                             authoritarian, 
                             materialist, 
                             spiritualist, 
                             militarist, 
-                            pacifist, 
-                            lastModified){
+                            pacifist){
         const stellarisQuestion = {
             question: question,
-            xenophobia: xenophobia,
-            xenophilia: xenophilia,
+            xenophobe: xenophobe,
+            xenophile: xenophile,
             egalitarian: egalitarian,
             authoritarian: authoritarian,
             materialist: materialist,
             spiritualist: spiritualist,
             militarist: militarist,
-            pacifist: pacifist,
-            lastModified: lastModified,
+            pacifist: pacifist
         }
 
         return this.create()

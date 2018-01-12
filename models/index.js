@@ -1,14 +1,14 @@
 "use strict";
 
 const path = require("path");
-const sequelizeModule = require("sequelize");
+const Sequelize = require("sequelize");
 const fs = require("fs");
 
 const db = {};
 
 const sequelizeCredentials = new Sequelize("Stellaris", "StellarisAdmin", "24157817", {
     host: "localhost",
-    port: "15432",
+    port: "5432",
     dialect: "postgres",
     pool: {
         max: 5,
@@ -20,12 +20,12 @@ const sequelizeCredentials = new Sequelize("Stellaris", "StellarisAdmin", "24157
 fs.readdirSync(__dirname).filter(function(file){
     return (file.indexOf(".") !== 0) && (file !== "index.js")
 }).forEach (function (file){
-    const model = sequelize.import(path.join(__dirname, file));
+    const model = sequelizeCredentials.import(path.join(__dirname, file));
     db[model.name] = model;
 });
 
-db.sequelize = sequelizeCredentials;
-db.Sequelize = sequelizeModule;
-db.StellarisQuestions = require("./stellarisQuestions")(sequelizeCredentials, sequelizeModule);
+db.sequelizeCredentials = sequelizeCredentials;
+db.Sequelize = Sequelize;
+db.StellarisQuestions = require("./stellarisQuestions")(sequelizeCredentials, Sequelize);
 
 module.exports = db;

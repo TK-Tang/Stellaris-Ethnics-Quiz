@@ -13,6 +13,8 @@
     "express-session": "^1.15.6",
     "mustache": "^2.3.0",
     "path": "^0.12.7",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
     "sequelize": "^4.31.0",
     "sequelize-cli": "^3.2.0"
   }
