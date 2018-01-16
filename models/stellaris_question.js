@@ -42,9 +42,6 @@ module.exports = function(sequelize, Sequelize) {
     };
 
     stellarisQuestion.get = async function(id){
-        // const result = this.findById(id);
-        // return result;
-
         return await this.findById(id);
     }
 

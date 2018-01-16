@@ -5,7 +5,9 @@ const session = require("express-session");
 const engines = require("consolidate");
 
 const models = require("./models")
+
 const HomeRouter = require("./routes/home.server.router");
+const StellarisQuizRouter = require("./routes/stellaris.quiz.router");
 
 const app = express();
 
@@ -20,7 +22,10 @@ app.set("view engine", "html");
 app.engine("html", require("ejs").renderFile);
 
 app.use("/", HomeRouter);
+app.use("/StellarisQuiz", StellarisQuizRouter);
 
+
+// Syc models, connect to database and start application
 models.sequelizeCredentials.sync({force: true}).then(() => {
     const date = new Date();
 
