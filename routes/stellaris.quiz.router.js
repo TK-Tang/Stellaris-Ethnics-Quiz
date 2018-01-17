@@ -9,7 +9,7 @@ router.get('/:id', (req, res) => {
         if (result === null){
             res.render("error_page.ejs", "Quiz question not found for Stellaris ethnics quiz.");
         } else {
-            res.render("stellaris_question.ejs", result);
+            res.render("stellaris_question.ejs", {result: result, id: id});
         }
     }).catch(e => {
         res.render("error_500.ejs");

@@ -38,3 +38,44 @@ p.italics {
 .bold {
     font-weight: bold;
 }
+
+.stellaris-question-breadcrumb {
+    padding-left: 10px;
+}
+
+.stellaris-question {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    height: auto;
+}
+
+.stellaris-question-container {
+    margin-top: 130px;
+    padding-top: 20px;
+    height: 200px;
+}
+
+.panel-default {
+    height: auto;
+}
+
+.panel-body {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.btn-container {
+    padding-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: center;
+}
+
+.btn-agree {
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 120px;
+}
