@@ -15,14 +15,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.set("views", path.join(__dirname, "/views"));
-app.use(express.static(path.join(__dirname, "")));
+app.use(express.static(path.join(__dirname, "/public")));
 
 app.engine("/html", engines.mustache);
 app.set("view engine", "html");
 app.engine("html", require("ejs").renderFile);
 
 app.use("/", HomeRouter);
-app.use("/StellarisQuiz", StellarisQuizRouter);
+app.use("/StellarisQuiz", StellarisQuizRouter, express.static(path.join(__dirname, "/public")));
 
 
 // Syc models, connect to database and start application
@@ -41,7 +41,7 @@ models.sequelizeCredentials.sync({force: true}).then(() => {
         pacifist: 0,
     }
 
-    models.stellarisQuestions.create(defaultQuestion).then(result => {
+    models.stellaris_question.create(defaultQuestion).then(result => {
         console.log("Default question added.");
     })
 

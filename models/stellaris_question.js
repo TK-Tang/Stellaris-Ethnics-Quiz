@@ -1,5 +1,5 @@
 module.exports = function(sequelize, Sequelize) {
-    const stellarisQuestion = sequelize.define('stellarisQuestion', {
+    const stellarisQuestion = sequelize.define('stellaris_question', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -41,7 +41,7 @@ module.exports = function(sequelize, Sequelize) {
         return this.create()
     };
 
-    stellarisQuestion.get = async function(id){
+    stellarisQuestion.get = async function(id) {
         return await this.findById(id);
     };
 

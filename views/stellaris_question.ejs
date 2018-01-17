@@ -6,14 +6,14 @@
 
 <title>Stellaris - Ethnics</title>
 
-<link rel="shortcut icon" href="views/img/Tab_Icon.png"/>
+<link rel="shortcut icon" href="img/Tab_Icon.png"/>
 
-<link href="views/css/bootstrap.min.css" rel="stylesheet">
-<link href="views/css/datepicker3.css" rel="stylesheet">
-<link href="views/css/styles.css" rel="stylesheet">
-<link href="views/css/stellaris-ethnics.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/datepicker3.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<link href="css/stellaris-ethnics.css" rel="stylesheet">
 
-<script src="views/js/lumino.glyphs.js"></script>
+<script src="js/lumino.glyphs.js"></script>
 
 </head>
 <body>
@@ -22,15 +22,24 @@
 
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<%- include partials/breadcrumb.ejs %>
+		<%- include partials/home-title.ejs %>
+		<%- include partials/home-description.ejs %>
+		<%- include partials/home-ethnic-description.ejs %>
+		
+		<div class="panel panel-blue col-lg-2 col-lg-offset-5">
+			<div class="panel-heading dark-overlay">
+					Begin Quiz!
+			</div>
+		</div>
 	</div>
 	
-	<script src="views/js/jquery-1.11.1.min.js"></script>
-	<script src="views/js/bootstrap.min.js"></script>
-	<script src="views/js/chart.min.js"></script>
-	<script src="views/js/chart-data.js"></script>
-	<script src="views/js/easypiechart.js"></script>
-	<script src="views/js/easypiechart-data.js"></script>
-	<script src="views/js/bootstrap-datepicker.js"></script>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/chart.min.js"></script>
+	<script src="js/chart-data.js"></script>
+	<script src="js/easypiechart.js"></script>
+	<script src="js/easypiechart-data.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
 	<script>
 		!function ($) {
 		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
