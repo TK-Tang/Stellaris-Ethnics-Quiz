@@ -1,5 +1,5 @@
 const express = require("express");
-const controller = require("../controllers/stellaris.quiz.controller");
+const models = require("../models");
 
 const router = express.Router();
 

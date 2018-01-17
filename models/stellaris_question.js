@@ -1,5 +1,5 @@
 module.exports = function(sequelize, Sequelize) {
-    const stellarisQuestion = sequelize.define('stellarisQuestions', {
+    const stellarisQuestion = sequelize.define('stellarisQuestion', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -43,7 +43,7 @@ module.exports = function(sequelize, Sequelize) {
 
     stellarisQuestion.get = async function(id){
         return await this.findById(id);
-    }
+    };
 
     return stellarisQuestion;
 }

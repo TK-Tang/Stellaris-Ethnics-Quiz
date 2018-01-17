@@ -46,8 +46,8 @@ models.sequelizeCredentials.sync({force: true}).then(() => {
     })
 
 
-    app.listen(8080, function(){
-        console.log("Stellaris ethnics quiz listening on port 8080!");
+    app.listen(9000, function(){
+        console.log("Stellaris ethnics quiz listening on port 9000!");
     })
 }).catch(e => {
     console.error("There was a connection error with the database.");

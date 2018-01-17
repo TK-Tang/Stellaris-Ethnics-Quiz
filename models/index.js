@@ -26,6 +26,6 @@ fs.readdirSync(__dirname).filter(function(file){
 
 db.sequelizeCredentials = sequelizeCredentials;
 db.Sequelize = Sequelize;
-db.StellarisQuestions = require("./stellarisQuestions")(sequelizeCredentials, Sequelize);
+db.StellarisQuestions = require("./stellaris_question")(sequelizeCredentials, Sequelize);
 
 module.exports = db;
