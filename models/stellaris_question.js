@@ -49,8 +49,12 @@ module.exports = function(sequelize, Sequelize) {
         })
     }
 
+    stellarisQuestion.countRows = async function (){
+        return stellarisQuestion.count();
+    }
+
     // Returns all the questions in the stellaris survey
-    stellarisQuestion.findAll = async function(){
+    stellarisQuestion.getAll = async function(){
         return stellarisQuestion.findAll();
     }
 
