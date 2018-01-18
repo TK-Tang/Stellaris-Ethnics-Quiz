@@ -7,7 +7,7 @@ const engines = require("consolidate");
 const models = require("./models")
 
 const HomeRouter = require("./routes/home.server.router");
-const StellarisQuizRouter = require("./routes/stellaris.quiz.router");
+const StellarisSurveyRouter = require("./routes/stellaris.survey.router");
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.set("view engine", "html");
 app.engine("html", require("ejs").renderFile);
 
 app.use("/", HomeRouter);
-app.use("/StellarisQuiz", StellarisQuizRouter, express.static(path.join(__dirname, "/public")));
+app.use("/StellarisSurvey", StellarisSurveyRouter, express.static(path.join(__dirname, "/public")));
 
 
 // Syc models, connect to database and start application
@@ -47,7 +47,7 @@ models.sequelizeCredentials.sync({force: true}).then(() => {
 
 
     app.listen(9000, function(){
-        console.log("Stellaris ethnics quiz listening on port 9000!");
+        console.log("Stellaris ethnics survey listening on port 9000!");
     })
 }).catch(e => {
     console.error("There was a connection error with the database.");

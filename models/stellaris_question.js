@@ -26,7 +26,7 @@ module.exports = function(sequelize, Sequelize) {
                             spiritualist, 
                             militarist, 
                             pacifist){
-        const stellarisQuestion = {
+        const surveyQuestion = {
             question: question,
             xenophobe: xenophobe,
             xenophile: xenophile,
@@ -36,10 +36,23 @@ module.exports = function(sequelize, Sequelize) {
             spiritualist: spiritualist,
             militarist: militarist,
             pacifist: pacifist
-        }
+        };
 
-        return this.create()
+        return this.create(surveyQuestion);
     };
+
+    stellarisQuestion.delete = function (id){
+        return stellarisQuestion.destroy({
+            where: {
+                id: id
+            }
+        })
+    }
+
+    // Returns all the questions in the stellaris survey
+    stellarisQuestion.findAll = async function(){
+        return stellarisQuestion.findAll();
+    }
 
     stellarisQuestion.get = async function(id) {
         return await this.findById(id);

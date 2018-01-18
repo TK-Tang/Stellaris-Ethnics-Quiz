@@ -21,9 +21,7 @@
 	<%- include partials/breadcrumb.ejs %>
 
 	<div class="progress">
-		<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-			<span class="sr-only">70% Complete</span>
-		</div>
+		<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width:<%= id %>%"></div>
 	</div>
 
 	<div class="panel panel-default col-sm-10 col-sm-offset-1 col-lg-6 col-lg-offset-3 stellaris-question-container">
@@ -33,19 +31,19 @@
 
 		<div class="panel-body">
 			<div class="btn-container">
-					<input type="button" class="btn btn-success btn-agree" value="Strongly Agree">
+					<input type="button" class="btn btn-success btn-option btn-strongly-agree" value="Strongly Agree">
 			</div>
 			<div class="btn-container">
-				<input type="button" class="btn btn-primary btn-agree" value="Agree">
+				<input type="button" class="btn btn-primary btn-option btn-agree" value="Agree">
 			</div>
 			<div class="btn-container">
-					<input type="button" class="btn btn-info btn-agree" value="Neutral/Unsure">
+					<input type="button" class="btn btn-info btn-option btn-neutral" value="Neutral/Unsure">
 			</div>
 			<div class="btn-container">
-					<input type="button" class="btn btn-warning btn-agree" value="Disagree">
+					<input type="button" class="btn btn-warning btn-option btn-disagree" value="Disagree">
 			</div>
 			<div class="btn-container">
-					<input type="button" class="btn btn-danger btn-agree" value="Strongly Disagree">
+					<input type="button" class="btn btn-danger btn-option btn-strongly-disagree" value="Strongly Disagree">
 			</div>
 		</div>
 

@@ -69,13 +69,64 @@ p.italics {
     padding-top: 10px;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 100%;
     text-align: center;
 }
 
-.btn-agree {
+.btn-option {
     font-size: 25px;
     text-align: center;
     font-weight: bold;
+    width: 450px;
     padding: 5px 120px;
+}
+
+.btn-strongly-agree {
+    background-color: rgb(19, 126, 19);
+    border-color: rgb(19, 126, 19);
+}
+
+.btn-strongly-agree:hover {
+    background-color: rgb(35, 175, 35);
+    border-color: rgb(35, 175, 35);
+}
+
+.btn-agree {
+    background-color: rgb(0, 102, 102);
+    border-color: rgb(0, 102, 102);
+}
+
+.btn-agree:hover {
+    background-color: rgb(2, 131, 131);
+    border-color: rgb(2, 131, 131);
+}
+
+.btn-neutral {
+    background-color: rgb(124, 124, 124);
+    border-color: rgb(124, 124, 124);
+}
+
+.btn-neutral:hover {
+    background-color: rgb(165, 165, 165);
+    border-color: rgb(165, 165, 165);
+}
+
+.btn-disagree {
+    background-color: rgb(165, 142, 37);
+    border-color: rgb(165, 142, 37);
+}
+
+.btn-disagree:hover {
+    background-color: rgb(214, 183, 45);
+    border-color: rgb(214, 183, 45);
+}
+
+.btn-strongly-disagree {
+    background-color: rgb(136, 20, 20);
+    border-color: rgb(136, 20, 20);
+}
+
+.btn-strongly-disagree:hover {
+    background-color: rgb(194, 25, 25);
+    border-color: rgb(194, 25, 25);
 }

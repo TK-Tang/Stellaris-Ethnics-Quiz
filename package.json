@@ -1,7 +1,7 @@
 {
-  "name": "StellarisEthnicQuiz",
+  "name": "StellarisEthnicSurvey",
   "version": "1.0.0",
-  "description": "Political ethnic axis quiz",
+  "description": "Political ethnic axis survey",
   "main": "index.js",
   "author": "TK",
   "license": "ISC",

@@ -7,7 +7,7 @@ router.get('/:id', (req, res) => {
     const id = parseInt(req.params.id);
     models.stellaris_question.get(id).then((result) => {
         if (result === null){
-            res.render("error_page.ejs", "Quiz question not found for Stellaris ethnics quiz.");
+            res.render("error_page.ejs", "Survey question not found for Stellaris ethnics survey.");
         } else {
             res.render("stellaris_question.ejs", {result: result, id: id});
         }
