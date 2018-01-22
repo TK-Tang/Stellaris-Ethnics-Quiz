@@ -4,7 +4,8 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const engines = require("consolidate");
 
-const models = require("./models")
+const models = require("./models");
+const scripts = require("./scripts/start_script.js");
 
 const HomeRouter = require("./routes/home.server.router");
 const StellarisSurveyRouter = require("./routes/stellaris.survey.router");
@@ -29,22 +30,7 @@ app.use("/StellarisSurvey", StellarisSurveyRouter, express.static(path.join(__di
 models.sequelizeCredentials.sync({force: true}).then(() => {
     const date = new Date();
 
-    const defaultQuestion = {
-        question: "Granting full citizenship to any sapient alien, regardless of their biology and culture is beneficial for civilization.",
-        xenophobe: 0,
-        xenophile: 75,
-        egalitarian: 50,
-        authoritarian: 0,
-        materialist: 0,
-        spiritualist: 0,
-        militarist: 0,
-        pacifist: 0,
-    }
-
-    models.stellaris_question.create(defaultQuestion).then(result => {
-        console.log("Default question added.");
-    })
-
+    scripts.startScript();
 
     app.listen(9000, function(){
         console.log("Stellaris ethnics survey listening on port 9000!");
