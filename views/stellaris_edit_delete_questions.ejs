@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Stellaris - Ethnics</title>
+
+        <link rel="shortcut icon" href="img/Tab_Icon.png"/>
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/datepicker3.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+        <link href="css/stellaris-ethnics.css" rel="stylesheet">
+        <link href="css/stellaris-edit.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <%- include partials/navbar.ejs %>
+        <%- include partials/sidebar.ejs %>
+
+        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+
+            <%- include partials/breadcrumb.ejs %>
+            <%- include partials/notifications.ejs%>
+
+            <div class="col-12">
+                <h1 class="page-header"> Stellaris Questions</h1>
+            </div>
+            <div class="col-sm-12 col-lg-12">
+                <% for (var i=0;i<questions.length;i++) { %>
+                    <div id="question-row-<%= questions[i].id %>" class="col-sm-12 col-lg-12">
+                        <div class="row">
+                            <div class="panel panel-grey panel-widget col-sm-9 col-lg-9 question-row">
+                                <div class="row no-padding">
+                                    <div class="col-sm-2 col-lg-2 widget-left question-label">                               
+                                        <div id="question-<%= i+1 %>" class="text-muted">Question <%= i+1 %></div>
+                                    </div>
+                                    <div class="col-sm-10 col-lg-10 widget-right question-blurb">
+                                        <p class="italics edit-question-text"><%= questions[i].question %></p>                                   
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="options-container col-sm-3 col-lg-3">
+                                <div class="col-sm-4">
+                                    <a href="EditStellarisSurvey/<%= questions[i].id %>" class="edit-btn bold">EDIT</a>
+                                </div>
+                                <div class="col-sm-6 col-sm-offset-1">
+                                    <a href="" id="delete-<%= questions[i].id %>" class="delete-btn delete-action bold">DELETE</a>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>  
+
+                <% } %>
+            </div>
+        </div>
+        
+        <%- include partials/scripts.ejs %>
+    </body>
+
+</html>

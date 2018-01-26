@@ -51,7 +51,6 @@ p.italics {
 }
 
 .stellaris-question-container {
-    margin-top: 130px;
     padding-top: 20px;
     height: 200px;
 }
@@ -87,6 +86,7 @@ p.italics {
 }
 
 .btn-strongly-agree:hover {
+    color: white;
     background-color: rgb(35, 175, 35);
     border-color: rgb(35, 175, 35);
 }
@@ -97,6 +97,7 @@ p.italics {
 }
 
 .btn-agree:hover {
+    color: white;
     background-color: rgb(2, 131, 131);
     border-color: rgb(2, 131, 131);
 }
@@ -107,6 +108,7 @@ p.italics {
 }
 
 .btn-neutral:hover {
+    color: white;
     background-color: rgb(165, 165, 165);
     border-color: rgb(165, 165, 165);
 }
@@ -117,6 +119,7 @@ p.italics {
 }
 
 .btn-disagree:hover {
+    color: white;
     background-color: rgb(214, 183, 45);
     border-color: rgb(214, 183, 45);
 }
@@ -127,6 +130,58 @@ p.italics {
 }
 
 .btn-strongly-disagree:hover {
+    color: white;
     background-color: rgb(194, 25, 25);
     border-color: rgb(194, 25, 25);
+}
+
+.white-text {
+    color: white;
+}
+
+.profile-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.notification-info {
+    position: fixed;
+    height: 40px;
+    width: 320px;
+    right: -340px;
+    top: 110px;
+    border-radius: 3px;
+    border-width: 2px;
+    border-color: rgb(94, 94, 94);
+    background-color: rgb(12, 146, 151);
+}
+
+.notification-error {
+    position: fixed;
+    height: 40px;
+    width: 320px;
+    right: -340px;
+    top: 110px;
+    border-radius: 3px;
+    background-color: rgb(175, 20, 0);;
+}
+
+
+.notification-text {
+    padding: 10px;
+    text-overflow: ellipsis !important;
+    white-space: nowrap;
+    overflow: hidden;
+    color: white;
+    width: auto;
+}
+
+.remove-notification-icon {
+    color: white;
+}
+
+.foreground{
+    z-index: 99900;
 }

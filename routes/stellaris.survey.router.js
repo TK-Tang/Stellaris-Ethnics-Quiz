@@ -11,13 +11,12 @@ router.get('/:id', (req, res) => {
             res.render("error_page.ejs", { error: "Survey question not found for Stellaris ethnics survey."} );
         } else {
             models.stellaris_question.countRows().then((returnRowCount) => {
-                rowCount = returnRowCount;
-                            
+                rowCount = returnRowCount;                           
                 res.render("stellaris_question.ejs", { result: returnQuestion, surveyInfo: { id: id, rowCount: returnRowCount } });
             });
         }
     }).catch(e => {
-        res.render("error_page.ejs", { error: "An unknown error occured."});
+        res.render("error_page.ejs", { error: "An unknown error occured." });
     });
 });
 

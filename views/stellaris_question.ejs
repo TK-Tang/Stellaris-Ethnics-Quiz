@@ -30,48 +30,27 @@
 			<%= result.question %>
 		</div>
 
-		<div class="panel-body">
+		<div class="panel-body white-text">
 			<div class="btn-container">
-					<input type="button" class="btn btn-success btn-option btn-strongly-agree" value="Strongly Agree">
+					<input type="button" class="btn btn-option btn-strongly-agree" value="Strongly Agree">
 			</div>
 			<div class="btn-container">
-				<input type="button" class="btn btn-primary btn-option btn-agree" value="Agree">
+				<input type="button" class="btn btn-option btn-agree" value="Agree">
 			</div>
 			<div class="btn-container">
-					<input type="button" class="btn btn-info btn-option btn-neutral" value="Neutral/Unsure">
+					<input type="button" class="btn btn-option btn-neutral" value="Neutral/Unsure">
 			</div>
 			<div class="btn-container">
-					<input type="button" class="btn btn-warning btn-option btn-disagree" value="Disagree">
+					<input type="button" class="btn btn-option btn-disagree" value="Disagree">
 			</div>
 			<div class="btn-container">
-					<input type="button" class="btn btn-danger btn-option btn-strongly-disagree" value="Strongly Disagree">
+					<input type="button" class="btn btn-option btn-strongly-disagree" value="Strongly Disagree">
 			</div>
 		</div>
 
 	</div>
 	
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/chart.min.js"></script>
-	<script src="js/chart-data.js"></script>
-	<script src="js/easypiechart.js"></script>
-	<script src="js/easypiechart-data.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script>
-		!function ($) {
-		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
-		        $(this).find('em:first').toggleClass("glyphicon-minus");      
-		    }); 
-		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
-
-		$(window).on('resize', function () {
-		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function () {
-		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>	
+	<%- include partials/scripts.ejs %>
 </body>
 
 </html>

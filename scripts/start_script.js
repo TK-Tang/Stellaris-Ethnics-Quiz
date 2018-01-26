@@ -55,11 +55,11 @@ module.exports.startScript = function() {
     }
 
     questionList.question005 = {
-        question: "Alien species best serve the humanity through slavery.",
+        question: "Hostile alien species best serve humanity through slavery.",
         xenophobe: 30,
         xenophile: -30,
-        egalitarian: -50,
-        authoritarian: 50,
+        egalitarian: -30,
+        authoritarian: 30,
         materialist: 0,
         spiritualist: 0,
         militarist: 5,
@@ -152,8 +152,6 @@ module.exports.startScript = function() {
 
     for (var key in questionList){
         var question = questionList[key]
-        models.stellaris_question.create(question).then(result => {
-            console.log("Default question added.");
-        })
+        models.stellaris_question.create(question);
     }
 }

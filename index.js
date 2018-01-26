@@ -9,6 +9,7 @@ const scripts = require("./scripts/start_script.js");
 
 const HomeRouter = require("./routes/home.server.router");
 const StellarisSurveyRouter = require("./routes/stellaris.survey.router");
+const EditStellarisSurveyRouter = require("./routes/stellaris.edit.survey.router");
 
 const app = express();
 
@@ -24,16 +25,14 @@ app.engine("html", require("ejs").renderFile);
 
 app.use("/", HomeRouter);
 app.use("/StellarisSurvey", StellarisSurveyRouter, express.static(path.join(__dirname, "/public")));
+app.use("/EditStellarisSurvey", EditStellarisSurveyRouter, express.static(path.join(__dirname, "/public")));
 
-
-// Syc models, connect to database and start application
+// Syc models, drop databases, connect to database and start application
 models.sequelizeCredentials.sync({force: true}).then(() => {
-    const date = new Date();
-
     scripts.startScript();
 
-    app.listen(9000, function(){
-        console.log("Stellaris ethnics survey listening on port 9000!");
+    app.listen(7000, function(){
+        console.log("Stellaris ethnics survey listening on port 7000!");
     })
 }).catch(e => {
     console.error("There was a connection error with the database.");
