@@ -23,13 +23,13 @@ router.delete("/:id", (req, res) => {
 
     models.stellaris_question.delete(id).then((numberOfRowsDestroyed) => {
         if (numberOfRowsDestroyed === 0){
-            res.status(200).send("Error: This question cannot be deleted because it does not exist.");
+            res.status(200).send({ error: "This question cannot be deleted because it does not exist."});
         } else {
             res.status(200).send({ message: "Question " + id + " deleted successfully.", id: id });
         }
     }).catch(e => {
         console.log(e);
-        res.status(500).send("Error: An unknown error occured.");
+        res.render("error_page.ejs", {error: "An unknown error occured deleting survey question."});
     });
 });
 
