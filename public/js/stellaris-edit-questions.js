@@ -9,14 +9,33 @@ $(document).ready(function(){
             success: function(res){
                 if (res === undefined || res.error !== undefined){
                     hideQuestion(e.target.parentElement.parentElement.parentElement.parentElement);
-                    generateNotification("failed", "Question does not exist in database");
+                    generateNotification("failed", res.error);
                 } else {
                     hideQuestion("#question-row-" + res.id);
                     generateNotification("success", "Question deleted from survey successfully");
                 }
             }
+        });
+        e.preventDefault();
+    });
+
+    $("button.edit-question-btn").on("click", function(e){
+        var id = event.target.id.split("-")[2];
+
+        $.ajax({
+            type: "POST",
+            url: "/EditStellarisSurvey/" + id,
+            data: $("#question-form-" + id).serialize(),
+            success: function(res){
+                if (res === undefined || res.error !== undefined ){
+                    generateNotification("failed", res.error);
+                } else {
+                    updateQuestionBlurb("#question-blurb-" + id, res.updatedQuestion.question);
+                    generateNotification("success", "Question updated successfully")
+                }
+            }
         })
-        e.preventDefault(); 
+       e.preventDefault();
     });
 });
 
@@ -84,7 +103,7 @@ function hideNotification(element){
 }
 
 function tuckNotification(element){
-    $("#" + element).animate({ "top": "-=45px"}, 300, "linear");
+    $("#" + element).animate({ "top": "-=45px"}, 500, "linear");
 }
 
 function sumNotifications(){
@@ -93,6 +112,11 @@ function sumNotifications(){
 }
 
 function hideQuestion(element){
-    $(element) === undefined ? "" : $(element).animate({"height": "-=70px"}, 200,"linear", function(){ $(element).remove(); });
+    $(element) === undefined ? "" : $(element).animate({"height": "-=70px"}, 500,"linear", function(){ $(element).remove(); });
+}
+
+function updateQuestionBlurb(element, blurb){
+    var x = $(element);
+    $(element)[0].innerText = blurb;
 }
 

@@ -44,28 +44,107 @@
                 <% for (var i=0;i<questions.length;i++) { %>
                     <div id="question-row-<%= questions[i].id %>" class="col-sm-12 col-lg-12">
                         <div class="row">
+
+                            <!-- Question row -->
                             <div class="panel panel-grey panel-widget col-sm-9 col-lg-9 question-row">
                                 <div class="row no-padding">
                                     <div class="col-sm-2 col-lg-2 widget-left question-label">                               
                                         <div id="question-<%= i+1 %>" class="text-muted">Question <%= i+1 %></div>
                                     </div>
                                     <div class="col-sm-10 col-lg-10 widget-right question-blurb">
-                                        <p class="italics edit-question-text"><%= questions[i].question %></p>                                   
+                                        <p id="question-blurb-<%= i+1 %>" class="italics edit-question-text"><%= questions[i].question %></p>                                   
                                     </div>
                                 </div>
                             </div>
     
+                            <!-- Option buttons -->
                             <div class="options-container col-sm-3 col-lg-3">
                                 <div class="col-sm-4">
-                                    <a href="EditStellarisSurvey/<%= questions[i].id %>" class="edit-btn bold">EDIT</a>
+                                    <a href="" data-toggle="modal" data-target="#edit-modal-<%= i+1 %>" class="edit-btn bold">EDIT</a>
                                 </div>
                                 <div class="col-sm-6 col-sm-offset-1">
                                     <a href="" id="delete-<%= questions[i].id %>" class="delete-btn delete-action bold">DELETE</a>
                                 </div>
                             </div>
-                        </div>    
-                    </div>  
 
+                            <div class="modal fade" id="edit-modal-<%= i+1 %>" role="dialog">
+                                <div class="modal-dialog">
+        
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Edit Question <%= i + 1%></h4>
+                                        </div>
+
+                                        <form action="EditStellarisSurvey/<%= questions[i].id %>" method="post" id="question-form-<%= questions[i].id %>">
+                                            <div class="modal-body">
+                                                <p class="bold"><%= questions[i].question %></p>
+                                                
+                                                <hr>
+                                                    <div class="form-group col-sm-12 col-lg-12">
+                                                        <label>Question: </label> 
+                                                        <input type="text" name="Question" class="form-control" placeholder="Leave blank if you do not want to change the question" />
+                                                    </div>
+                                                <hr>
+
+                                                <div class="col-sm-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Xenophile: </label> 
+                                                        <input type="number" name="Xenophile" class="form-control" value="<%= questions[i].xenophile %>" />
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Egalitarian: </label>
+                                                        <input type="number" name="Egalitarian" class="form-control" value="<%= questions[i].egalitarian %>"/>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Spiritualist: </label>
+                                                        <input type="number" name="Spiritualist" class="form-control" value="<%= questions[i].spiritualist %>"/>
+                                                    </div>
+
+                                                    <div>
+                                                        <label>Pacifist: </label>
+                                                        <input type="number" name="Pacifist" class="form-control" value="<%= questions[i].pacifist %>"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Xenophobe: </label> 
+                                                        <input type="number" name="Xenophobe" class="form-control" value="<%= questions[i].xenophobe %>" />
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Authoritarian:</label>
+                                                        <input type="number" name="Authoritarian" class="form-control" value="<%= questions[i].authoritarian %>"/>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Materialist: </label>
+                                                        <input type="number" name="Materialist" class="form-control" value="<%= questions[i].materialist %>">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Militarist: </label>
+                                                        <input type="number" name="Militarist" class="form-control" value="<%= questions[i].militarist %>">
+                                                    </div>
+                                                </div>
+
+                                                <p class="text-muted">These values will be the weighting when a user answers strongly agree to the question</p>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary edit-question-btn" id="edit-question-<%= questions[i].id %>">Submit</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Modal -->
+                        </div>
+                    </div>        
                 <% } %>
             </div>
         </div>

@@ -17,7 +17,7 @@ module.exports = function(sequelize, Sequelize) {
         pacifist: Sequelize.INTEGER,
     });
 
-    stellarisQuestion.insert = function(question, 
+    stellarisQuestion.insert = async function(question, 
                             xenophobe, 
                             xenophile, 
                             egalitarian, 
@@ -38,29 +38,59 @@ module.exports = function(sequelize, Sequelize) {
             pacifist: pacifist
         };
 
-        return this.create(surveyQuestion);
+        return await this.create(surveyQuestion);
     };
 
-    stellarisQuestion.delete = function (id){
-        return stellarisQuestion.destroy({
+    stellarisQuestion.get = async function(id){
+        return await this.findById(id);
+    };
+
+    stellarisQuestion.update = async function(id, question, xenophile, xenophobe, egalitarian, authoritarian, materialist, spiritualist, militarist, pacifist){
+        
+        var updateValues = {
+            question: question,
+            xenophile: xenophile,
+            xenophobe: xenophobe,
+            egalitarian: egalitarian,
+            authoritarian: authoritarian,
+            materialist: materialist,
+            spiritualist: spiritualist,
+            militarist: militarist,
+            pacifist: pacifist
+        }
+        
+        const t = await sequelize.transaction();
+        const q = await stellarisQuestion.findById(id, { transaction: t });
+        updateValues.question = updateValues.question === "" ? q.question : updateValues.question;
+
+        const updatedQuestion = await q.updateAttributes(
+            updateValues
+        ,{
+            transaction: t
+        });
+        t.commit();
+        return updatedQuestion;
+    };
+
+    stellarisQuestion.delete = async function (id){
+        return await stellarisQuestion.destroy({
             where: {
                 id: id
             }
         })
     }
 
-    stellarisQuestion.countRows = async function (){
-        return stellarisQuestion.count();
-    }
-
-    // Returns all the questions in the stellaris survey
     stellarisQuestion.getAll = async function(){
-        return stellarisQuestion.findAll();
+        return await stellarisQuestion.findAll({
+            order: [ 
+                ['stellarisQuestions_id', 'ASC'],
+            ],
+        });
     }
 
-    stellarisQuestion.get = async function(id) {
-        return await this.findById(id);
-    };
+    stellarisQuestion.countRows = async function(){
+        return await stellarisQuestion.count();
+    }
 
     return stellarisQuestion;
 }
