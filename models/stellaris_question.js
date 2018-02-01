@@ -92,5 +92,9 @@ module.exports = function(sequelize, Sequelize) {
         return await stellarisQuestion.count();
     }
 
+    stellarisQuestion.listIds = async function(){
+        return await stellarisQuestion.findAll({attributes: ['stellarisQuestions_id']})
+    }
+
     return stellarisQuestion;
 }

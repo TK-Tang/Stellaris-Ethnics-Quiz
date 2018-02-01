@@ -75,7 +75,7 @@ router.post("/:id", (req, res) => {
     }).catch(e => {
         console.log(e);
         res.render("error_page.ejs", { error: "An unknown error occured editing survey question." });
-    })
-})
+    });
+});
 
 module.exports = router;

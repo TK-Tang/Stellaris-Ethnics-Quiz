@@ -19,7 +19,7 @@ module.exports.startScript = function() {
     }
 
     questionList.question002 = {
-        question: "A superior military fleet ensures the success of humanity's survival in space.",
+        question: "A superior military fleet ensures the success of humanity's survival amongst the stars.",
         xenophobe: 0,
         xenophile: 0,
         egalitarian: 0,
@@ -31,7 +31,7 @@ module.exports.startScript = function() {
     }
 
     questionList.question003 = {
-        question: "Democratic leadership is inferior than that of dictatorship.",
+        question: "Democratic leadership is inferior than that of autocracy.",
         xenophobe: 0,
         xenophile: 0,
         egalitarian: -80,
@@ -103,7 +103,7 @@ module.exports.startScript = function() {
     }
 
     questionList.question009 = {
-        question: "There exists in all people, a sentimental intuition, a moral conscious, a spiritual soul.",
+        question: "There exists in all people, the sentimental intuition, the moral conscious, the spiritual soul.",
         xenophobe: 0,
         xenophile: 0,
         egalitarian: 0,
