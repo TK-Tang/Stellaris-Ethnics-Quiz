@@ -10,17 +10,14 @@ function generateNotification(status, message){
     var notificationRemoveIcon = document.createElement("span")
     notificationRemoveIcon.classList.add("glyphicon");
     notificationRemoveIcon.classList.add("glyphicon-remove");
-    notificationRemoveIcon.classList.add("foreground");
 
     var notificationRemoveLink = document.createElement("a");
     notificationRemoveLink.classList.add("pull-right");
     notificationRemoveLink.id = "remove-notification-icon" + notificationId;
-    notificationRemoveLink.classList.add("foreground");
     notificationRemoveLink.appendChild(notificationRemoveIcon);
 
     var notificationText = document.createElement("p");
     notificationText.classList.add("notification-text");
-    notificationText.classList.add("foreground");
     notificationText.appendChild(document.createTextNode(message));
     notificationText.appendChild(notificationRemoveLink);
 
@@ -65,7 +62,7 @@ function hideNotification(element){
 }
 
 function tuckNotification(element){
-    $("#" + element).animate({ "top": "-=45px"}, 500, "linear");
+    $("#" + element).animate({ "top": "-=45px"}, 250, "linear");
 }
 
 function sumNotifications(){

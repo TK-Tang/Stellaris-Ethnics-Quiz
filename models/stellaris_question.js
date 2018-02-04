@@ -6,7 +6,7 @@ module.exports = function(sequelize, Sequelize) {
             autoIncrement: true,
             field: 'stellarisQuestions_id'
         },
-        question: Sequelize.STRING,
+        question: Sequelize.STRING(511),
         egalitarian: Sequelize.INTEGER,
         authoritarian: Sequelize.INTEGER,
         xenophile: Sequelize.INTEGER,

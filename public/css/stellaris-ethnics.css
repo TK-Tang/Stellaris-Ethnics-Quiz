@@ -182,6 +182,10 @@ p.italics {
     color: white;
 }
 
+.clickable-div {
+    cursor: pointer;
+}
+
 .foreground{
-    z-index: 99900;
+    z-index: 999;
 }

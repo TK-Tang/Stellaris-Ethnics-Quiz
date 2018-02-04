@@ -5,13 +5,12 @@ $(document).ready(function(){
             type: "DELETE",
             url: "/EditStellarisSurvey/" + id,
             success: function(res){
-                if (res === undefined || res.error !== undefined){
-                    hideQuestion(e.target.parentElement.parentElement.parentElement.parentElement);
-                    generateNotification("failed", res.error);
-                } else {
-                    hideQuestion("#question-row-" + res.id);
-                    generateNotification("success", "Question deleted from survey successfully");
-                }
+                hideQuestion("#question-row-" + res.id);
+                generateNotification("success", res.message);
+            },
+            error: function(res){
+                hideQuestion(e.target.parentElement.parentElement.parentElement.parentElement);
+                generateNotification("failed", res.responseJSON.error);
             }
         });
         e.preventDefault();
@@ -25,13 +24,21 @@ $(document).ready(function(){
             url: "/EditStellarisSurvey/" + id,
             data: $("#question-form-" + id).serialize(),
             success: function(res){
-                if (res === undefined || res.error !== undefined ){
-                    generateNotification("failed", res.error);
-                } else {
-                    updateQuestionBlurb("#question-blurb-" + id, res.updatedQuestion.question);
-                    generateNotification("success", "Question updated successfully")
-                }
-            }
+                updateQuestionBlurb("#question-blurb-" + id, res.updatedQuestion.question);
+                generateNotification("success", res.message);
+            },
+            error: function(res){ generateNotification("failed", res.responseJSON.error); }
+        })
+       e.preventDefault();
+    });
+
+    $("#add-question-btn").on("click", function(e){
+        $.ajax({
+            type: "PUT",
+            url: "/EditStellarisSurvey/",
+            data: $("#add-question-form").serialize(),
+            success: function(res){ generateNotification("success", res.message ); },
+            error: function(res){ generateNotification("failed", res.responseJSON.error); }
         })
        e.preventDefault();
     });
