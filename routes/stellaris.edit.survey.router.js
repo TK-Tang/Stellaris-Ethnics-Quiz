@@ -34,21 +34,26 @@ router.get("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-    const id = parseInt(req.params.id);
-    if (isNaN(id)){
+    const question_id = parseInt(req.params.id);
+    if (isNaN(question_id)){
         res.status(400).send("Input ID is not a number");
     }
 
-    models.stellaris_question.delete(id).then((numberOfRowsDestroyed) => {
-        if (numberOfRowsDestroyed === 0){
-            res.status(400).send({ error: "Cannot delete a question does not exist."});
-        } else {
-            res.status(200).send({ message: "Question deleted successfully.", id: id });
-        }
-    }).catch(e => {
-        console.log(e);
-        res.render("error_page.ejs", { error: "An unknown error occured deleting survey question." });
-    });
+    Promise.all([models.stellaris_question.delete(question_id), models.stellaris_answer.delete(question_id)])
+        .then(([questionsDestroyed, answersDestroyed]) => {
+            if( questionsDestroyed == 0){
+                res.status(400).send({ error: "Cannot delete a question that does not exist"});
+            } else if (questionsDestroyed > 1){
+                res.status(500).send({ error: "Multiple questions deleted" });
+            } else if (answersDestroyed > 1){
+                res.status(500).send({ error: "Error with clearing questions." });
+            }
+
+            res.status(200).send({ message: "Question deleted successfully", id: question_id });          
+        }).catch(e => {
+            console.log(e);
+            res.render("error_page.ejs").send({ message: "An unknown error occured with deleting survey question" });
+        });
 });
 
 router.post("/:id", (req, res) => {
@@ -73,7 +78,7 @@ router.post("/:id", (req, res) => {
                                     req.body.Militarist,
                                     req.body.Pacifist).then((updatedQuestion) => {
         if (updatedQuestion === undefined){
-            res.status(400).send({ error: "Canno edit a question does not exist"})
+            res.status(400).send({ error: "Cannot edit a question does not exist"})
         } else {
             res.status(200).send({ message: "Question updated successfully", updatedQuestion : updatedQuestion });
         }

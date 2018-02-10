@@ -13,7 +13,7 @@ function generateNotification(status, message){
 
     var notificationRemoveLink = document.createElement("a");
     notificationRemoveLink.classList.add("pull-right");
-    notificationRemoveLink.id = "remove-notification-icon" + notificationId;
+    notificationRemoveLink.id = "remove-notification-icon-" + notificationId;
     notificationRemoveLink.appendChild(notificationRemoveIcon);
 
     var notificationText = document.createElement("p");
@@ -25,7 +25,7 @@ function generateNotification(status, message){
     notificationCard.classList.add("notification-card");
     notificationCard.classList.add("foreground");
     status === "success" ? notificationCard.classList.add("notification-info") : notificationCard.classList.add("notification-error");
-    notificationCard.id = "delete-notification-" + notificationId;
+    notificationCard.id = "notification-" + notificationId;
     notificationCard.appendChild(notificationText);
     notificationCard.style.top = topOffset + "px";
 
@@ -33,15 +33,15 @@ function generateNotification(status, message){
   
     showNotification(notificationCard.id);
 
-    $("#remove-notification-icon" + notificationId).on("click", function(e){
+    $("#remove-notification-icon-" + notificationId).on("click", function(e){
         hideNotification(e.target.parentElement.parentElement.parentElement.id);
         e.preventDefault(); 
     });
 
-    // <div class="notification-card notification-info delete-success">
+    // <div class="notification-card notification-info delete-success" id="notification-3">
     //     <p class="notification-text">    
     //         Question deleted from survey successfully. 
-    //         <a class="pull-right remove-notification-icon">
+    //         <a class="pull-right remove-notification-icon" id="remove-notification-icon-3">
     //             <span class="glyphicon glyphicon-remove"></span>
     //         </a>
     //     </p>
@@ -55,9 +55,9 @@ function showNotification(element){
 function hideNotification(element){
     $("#" + element).animate({ "right": "-=360px"}, 500, "linear", function(){ $("#" + element).remove(); });
 
-    var elementId = parseInt(element.split("-")[2]);
+    var elementId = parseInt(element.split("-")[1]);
     for (var i = 1 ; i <= sumNotifications(); i++){
-        tuckNotification("delete-notification-" + (elementId + i));
+        tuckNotification("notification-" + (elementId + i));
     }
 }
 
@@ -66,6 +66,5 @@ function tuckNotification(element){
 }
 
 function sumNotifications(){
-    var x = $("div.notification-card").length
-    return x;
+    return $("div.notification-card").length;
 }

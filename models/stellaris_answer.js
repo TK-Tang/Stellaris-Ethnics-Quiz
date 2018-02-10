@@ -10,6 +10,7 @@ module.exports = function(sequelize, Sequelize) {
         answer: Sequelize.INTEGER
     });
 
+    // CREATE METHODS
     stellarisAnswer.insert = async function(question_id, answer){
         const surveyAnswer = {
             question_id: question_id,
@@ -19,10 +20,20 @@ module.exports = function(sequelize, Sequelize) {
         return await this.create(surveyAnswer);
     }
 
+    // GET METHODS
     stellarisAnswer.get = async function(id){
         return await this.findById(id);
     }
 
+    stellarisAnswer.getAll = async function(){
+        return await stellarisAnswer.findAll({
+            order: [
+                ['stellarisAnswer_id', 'ASC'],
+            ],
+        });
+    }
+
+    // UPDATE METHODS
     stellarisAnswer.update = async function(id, answer) {
 
         var updateValues = {
@@ -39,14 +50,16 @@ module.exports = function(sequelize, Sequelize) {
         return updatedAnswer;
     }
 
-    stellarisAnswer.getAll = async function(){
-        return await stellarisAnswer.findAll({
-            order: [
-                ['stellarisAnswer_id', 'ASC'],
-            ],
+    // DELETE METHODS
+    stellarisAnswer.delete = function (id){
+        return stellarisAnswer.destroy({
+            where: {
+                question_id: id
+            }
         });
     }
 
+    // UTILLITY METHODS
     stellarisAnswer.countRows = async function(){
         return await stellarisAnswer.count();
     }

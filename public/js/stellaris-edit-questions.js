@@ -49,7 +49,6 @@ function hideQuestion(element){
 }
 
 function updateQuestionBlurb(element, blurb){
-    var x = $(element);
     $(element)[0].innerText = blurb;
 }
 
