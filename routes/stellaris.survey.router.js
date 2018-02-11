@@ -3,15 +3,14 @@ const models = require("../models");
 
 const router = express.Router();
 
+router.get('/results', (req, res) => {
+    res.render("stellaris_results.ejs");
+});
+
 router.get('/:id', (req, res) => {
     const id = parseInt(req.params.id);
     if (isNaN(id)){
         res.status(400).send({ message:"Input ID is not a number" });
-        return;
-    }
-
-    if ( id == (-1) ) {
-        res.render("stellaris_results.ejs");
         return;
     }
 
