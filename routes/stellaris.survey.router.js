@@ -10,10 +10,12 @@ router.get('/:id', (req, res) => {
         return;
     }
 
+    if ( id == (-1) ) {
+        res.render("stellaris_results.ejs");
+    }
+
     models.stellaris_question.get(id).then((returnQuestion) => {
-        if ( id == (-1) ) {
-            res.render("stellaris_results.ejs");
-        } else if (returnQuestion === null || returnQuestion === undefined){
+        if (returnQuestion === null || returnQuestion === undefined){
             res.render("error_page.ejs", { error: "Survey question not found for Stellaris ethnics survey."} );
         } else {
             models.stellaris_question.countRows().then((returnRowCount) => {
