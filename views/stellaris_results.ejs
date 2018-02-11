@@ -12,6 +12,7 @@
 		<link href="css/lumino/datepicker3.css" rel="stylesheet">
 		<link href="css/lumino/styles.css" rel="stylesheet">
 		<link href="css/stellaris-ethnics.css" rel="stylesheet">
+		<link href="css/stellaris-result.css" rel="stylesheet">
 	</head>
 	<body>
 		<%- include partials/navbar.ejs %>
@@ -19,11 +20,30 @@
 
 		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 			<%- include partials/breadcrumb.ejs %>
-            <%- include partials/home-title.ejs %>
-            
-            Results here!
+			<%- include partials/result-title.ejs %>
+
+			<%- include partials/result-line-chart.ejs %>
+			<hr>
+			<%- include partials/result-bar.ejs %>
+			<hr>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">Ethnic Summary</div>
+						<div class="panel-body">
+							<div class="canvas-wrapper">
+								<canvas class="chart" id="summary-ethnic-donut" ></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<%- include partials/result-pie.ejs %>
+			<%- include partials/result-percentiles.ejs %>			
 		</div>
 		
 		<%- include partials/scripts.ejs %>
+		<script src="js/chart-data.js"></script>
 	</body>
 </html>

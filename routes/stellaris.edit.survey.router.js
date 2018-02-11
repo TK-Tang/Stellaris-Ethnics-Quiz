@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
         if (returnAllQuestions === null){
             res.render("error_page.ejs", { error: "Could not retrieve survey questions for stellaris ethnics survey."} );
         } else {
-            res.render("stellaris_edit_delete_questions.ejs", { questions: returnAllQuestions , surveyInfo: { id: "Editor" }});
+            res.render("stellaris_edit_delete_questions.ejs", { questions: returnAllQuestions , breadcrumb: "Editor" });
         }
     }).catch(e => {
         res.render("error_page.ejs", { error: "An unknown error occured."});
