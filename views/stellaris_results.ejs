@@ -21,7 +21,19 @@
 			<%- include partials/breadcrumb.ejs %>
             <%- include partials/home-title.ejs %>
             
-            Results here!
+			Results here!
+			
+			
+				<%=	result.PercentileEgalitarian + " " + 
+					result.PercentileAuthoritarian  + " " + 
+					result.PercentileXenophobe + " " + 
+					result.PercentileXenophile + " " + 
+					result.PercentileMaterialist + " " + 
+					result.PercentileSpiritualist + " " + 
+					result.PercentileMilitarist + " " + 
+					result.PercentilePacifist;
+				%>
+			
 		</div>
 		
 		<%- include partials/scripts.ejs %>

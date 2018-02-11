@@ -3,8 +3,104 @@ const models = require("../models");
 
 const router = express.Router();
 
+router.get('/results-data', (req, res) => {
+
+    var dataPayload = {
+        Egalitarian : 0,
+        Authoritarian : 0,
+        Materialist : 0,
+        Spiritualist : 0,
+        Xenophobe : 0,
+        Xenophile : 0,
+        Militarist : 0,
+        Pacifist : 0
+    }
+    
+    Promise.all([ models.stellaris_question.getAll(), models.stellaris_answer.getAll() ])
+        .then(([stellarisQuestion, stellarisAnswer]) => {
+            for (var i = 0; i < stellarisQuestion.length; i++ ) {
+
+                if( !(stellarisAnswer[i] === null || stellarisAnswer[i] === undefined) ) {
+                    dataPayload.Egalitarian += stellarisQuestion[i].egalitarian * stellarisAnswer[i].answer;
+                    dataPayload.Authoritarian += stellarisQuestion[i].authoritarian * stellarisAnswer[i].answer;
+                    dataPayload.Materialist += stellarisQuestion[i].materialist * stellarisAnswer[i].answer;
+                    dataPayload.Spiritualist += stellarisQuestion[i].spiritualist * stellarisAnswer[i].answer;
+                    dataPayload.Xenophobe += stellarisQuestion[i].xenophobe * stellarisAnswer[i].answer;
+                    dataPayload.Xenophile += stellarisQuestion[i].xenophile * stellarisAnswer[i].answer;
+                    dataPayload.Militarist += stellarisQuestion[i].militarist * stellarisAnswer[i].answer;
+                    dataPayload.Pacifist += stellarisQuestion[i].pacifist * stellarisAnswer[i].answer;
+                }
+            }
+
+            res.status(200).send({ dataPayload: dataPayload});
+
+        }).catch(e => {
+            console.log(e);
+            res.render("error_page.ejs", {message: "An unknown error occured calculating results."});
+        });
+});
+
 router.get('/results', (req, res) => {
-    res.render("stellaris_results.ejs");
+
+    var dataPayload = {
+        Egalitarian : 0,
+        Authoritarian : 0,
+        Materialist : 0,
+        Spiritualist : 0,
+        Xenophobe : 0,
+        Xenophile : 0,
+        Militarist : 0,
+        Pacifist : 0
+    }
+
+    var result = {
+        PercentileEgalitarian : 0,
+        PercentileAuthoritarian : 0,
+        PercentileMaterialist : 0,
+        PercentileSpiritualist : 0,
+        PercentileXenophobe : 0,
+        PercentileXenophile : 0,
+        PercentileMilitarist : 0,
+        PercentilePacifist : 0
+    }
+    
+    Promise.all([ models.stellaris_question.getAll(), models.stellaris_answer.getAll() ])
+        .then(([stellarisQuestion, stellarisAnswer]) => {
+            for (var i = 0; i < stellarisQuestion.length; i++ ) {
+                if( !(stellarisAnswer[i] === null || stellarisAnswer[i] === undefined) ) {
+                    dataPayload.Egalitarian += stellarisQuestion[i].egalitarian * stellarisAnswer[i].answer;
+                    dataPayload.Authoritarian += stellarisQuestion[i].authoritarian * stellarisAnswer[i].answer;
+                    dataPayload.Materialist += stellarisQuestion[i].materialist * stellarisAnswer[i].answer;
+                    dataPayload.Spiritualist += stellarisQuestion[i].spiritualist * stellarisAnswer[i].answer;
+                    dataPayload.Xenophobe += stellarisQuestion[i].xenophobe * stellarisAnswer[i].answer;
+                    dataPayload.Xenophile += stellarisQuestion[i].xenophile * stellarisAnswer[i].answer;
+                    dataPayload.Militarist += stellarisQuestion[i].militarist * stellarisAnswer[i].answer;
+                    dataPayload.Pacifist += stellarisQuestion[i].pacifist * stellarisAnswer[i].answer;
+                }
+                result.PercentileEgalitarian += stellarisQuestion[i].egalitarian * 2;
+                result.PercentileAuthoritarian += stellarisQuestion[i].authoritarian * 2;
+                result.PercentileMaterialist += stellarisQuestion[i].materialist * 2;
+                result.PercentileSpiritualist += stellarisQuestion[i].spiritualist * 2;
+                result.PercentileXenophobe += stellarisQuestion[i].xenophobe * 2;
+                result.PercentileXenophile += stellarisQuestion[i].xenophile * 2;
+                result.PercentileMilitarist += stellarisQuestion[i].militarist * 2;
+                result.PercentilePacifist += stellarisQuestion[i].pacifist * 2;
+            }
+            result.PercentileEgalitarian = Math.round( dataPayload.Egalitarian / result.PercentileEgalitarian * 100);
+            result.PercentileAuthoritarian = Math.round( dataPayload.Authoritarian / result.PercentileAuthoritarian * 100);
+            result.PercentileMaterialist = Math.round( dataPayload.Materialist / result.PercentileMaterialist * 100);
+            result.PercentileSpiritualist = Math.round( dataPayload.Spiritualist / result.PercentileSpiritualist * 100);
+            result.PercentileXenophobe = Math.round( dataPayload.Xenophobe / result.PercentileXenophobe * 100);
+            result.PercentileXenophile = Math.round( dataPayload.Xenophile / result.PercentileXenophile * 100);
+            result.PercentileMilitarist = Math.round( dataPayload.Militarist / result.PercentileMilitarist * 100);
+            result.PercentilePacifist = Math.round( dataPayload.Pacifist / result.PercentilePacifist * 100);
+
+            res.render("stellaris_results.ejs", { result: result});
+
+        }).catch(e => {
+            console.log(e);
+            res.render("error_page.ejs", {message: "An unknown error occured calculating results."});
+        });
 });
 
 router.get('/:id', (req, res) => {
