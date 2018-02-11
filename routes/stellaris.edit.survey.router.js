@@ -43,16 +43,19 @@ router.delete("/:id", (req, res) => {
         .then(([questionsDestroyed, answersDestroyed]) => {
             if( questionsDestroyed == 0){
                 res.status(400).send({ error: "Cannot delete a question that does not exist"});
+                return;
             } else if (questionsDestroyed > 1){
                 res.status(500).send({ error: "Multiple questions deleted" });
+                return;
             } else if (answersDestroyed > 1){
                 res.status(500).send({ error: "Error with clearing questions." });
+                return;
             }
 
-            res.status(200).send({ message: "Question deleted successfully", id: question_id });          
+            res.status(200).send({ message: "Question deleted successfully", id: question_id });         
         }).catch(e => {
             console.log(e);
-            res.render("error_page.ejs").send({ message: "An unknown error occured with deleting survey question" });
+            res.render("error_page.ejs", { message: "An unknown error occured with deleting survey question" });
         });
 });
 

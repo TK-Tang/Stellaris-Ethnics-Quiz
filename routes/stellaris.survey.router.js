@@ -5,6 +5,10 @@ const router = express.Router();
 
 router.get('/:id', (req, res) => {
     const id = parseInt(req.params.id);
+    if (isNaN(id)){
+        res.status(400).send({ message:"Input ID is not a number" });
+        return;
+    }
 
     models.stellaris_question.get(id).then((returnQuestion) => {
         if (returnQuestion === null || returnQuestion === undefined){
@@ -24,8 +28,11 @@ router.post('/:id', (req, res) => {
     const id = parseInt(req.params.id);
     var message;
 
-    models.stellaris_answer.get(id).then((returnAnswer) => {
+    if (isNaN(id)){
+        res.status(400).send({ message:"Input ID is not a number" });
+    }
 
+    models.stellaris_answer.get(id).then((returnAnswer) => {
         if (returnAnswer === null || returnAnswer === undefined){
             models.stellaris_answer.insert(req.body.question_id, req.body.answer).catch( e => {
                 console.log(e);

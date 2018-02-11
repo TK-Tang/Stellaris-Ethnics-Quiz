@@ -50,7 +50,7 @@ function getNextQuestionId(res){
     }
 
     // Check if it is last element in the array
-    if ((index + 2) == res.idList.length){
+    if ((index + 2) == (res.idList.length + 1)){
         return -1;
     } else {
         return parseInt(index + 2);
