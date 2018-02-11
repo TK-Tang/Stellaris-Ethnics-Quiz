@@ -6,7 +6,7 @@ const fs = require("fs");
 
 const db = {};
 
-const sequelizeCredentials = new Sequelize("Stellaris", "StellarisAdmin", "24157817", {
+const sequelizeCredentials = new Sequelize("Stellaris", "Simon_Tang", "Wqop2190.", {
     host: "localhost",
     port: "5432",
     dialect: "postgres",
