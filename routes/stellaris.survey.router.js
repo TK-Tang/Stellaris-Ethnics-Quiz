@@ -12,6 +12,7 @@ router.get('/:id', (req, res) => {
 
     if ( id == (-1) ) {
         res.render("stellaris_results.ejs");
+        return;
     }
 
     models.stellaris_question.get(id).then((returnQuestion) => {
