@@ -157,52 +157,53 @@ function loadArmsPieChart(res){
 }
 
 function loadSummaryEthnicDonutChart(res){
+
 	summaryEthnicData = 
 	[
 		{
-			value: res.result.Pacifist,
+			value: res.result.Pacifist < 0 ? 0 : res.result.Pacifist,
 			color: "#8d8d8df1",
 			highlight: "#bdbdbdf1",
 			label: "Pacifist",
 		},
 		{
-			value: res.result.Militarist,
+			value: res.result.Militarist < 0 ? 0 : res.result.Militarist,
 			color: "#444444",
 			highlight: "#181616",
 			label: "Militarist",
 		},
 		{
-			value: res.result.Spiritualist,
+			value: res.result.Spiritualist < 0 ? 0 : res.result.Spiritualist,
 			color: "#ffe600",
 			highlight: "#ffee50",
 			label: "Spiritualist",
 		},
 		{
-			value: res.result.Materialist,
+			value: res.result.Materialist < 0 ? 0 : res.result.Materialist,
 			color: "#e9c600",
 			highlight: "#ffd900",
 			label: "Materialist",
 		},
 		{
-			value: res.result.Xenophile,
+			value: res.result.Xenophile < 0 ? 0 : res.result.Xenophile,
 			color: "#ef4040",
 			highlight: "#f85252",
 			label: "Xenophile",
 		},
 		{
-			value: res.result.Xenophobe,
+			value: res.result.Xenophobe < 0 ? 0 : res.result.Xenophobe,
 			color: "#800000",
 			highlight: "#5e0a0a",
 			label: "Xenophobe",
 		},
 		{
-			value: res.result.Egalitarian,
+			value: res.result.Egalitarian < 0 ? 0 : res.result.Egalitarian,
 			color: "#1fc2f3",
 			highlight: "#6ad8fa",
 			label: "Egalitarian",
 		},
 		{
-			value: res.result.Authoritarian,
+			value: res.result.Authoritarian < 0 ? 0 : res.result.Authoritarian,
 			color: "#147a70",
 			highlight: "#0b534c",
 			label: "Authoritarian",
@@ -230,7 +231,7 @@ function triggerSummaryEthnicChart(){
 }
 
 function triggerGovernmentAndDiplomaticDataPopulation(){
-	if (window.pageYOffset < 1800 || window.pageYOffset > 2150 || hasDiplomaticAndCulturalAxisDataRendered){
+	if (window.pageYOffset < 18 a00 || window.pageYOffset > 2150 || hasDiplomaticAndCulturalAxisDataRendered){
 		return;
 	}
 
