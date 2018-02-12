@@ -231,7 +231,7 @@ function triggerSummaryEthnicChart(){
 }
 
 function triggerGovernmentAndDiplomaticDataPopulation(){
-	if (window.pageYOffset < 18 a00 || window.pageYOffset > 2150 || hasDiplomaticAndCulturalAxisDataRendered){
+	if (window.pageYOffset < 1800 || window.pageYOffset > 2150 || hasDiplomaticAndCulturalAxisDataRendered){
 		return;
 	}
 
